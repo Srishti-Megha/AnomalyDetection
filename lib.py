@@ -97,6 +97,7 @@ def optimum_component_for_PCA(df_scaled):
     plt.xticks(np.arange(0, df_scaled.shape[1], step=1)) #change from 0-based array index to 1-based human-readable label
     plt.yticks(np.arange(0, 1.1, step=0.05))
     plt.ylabel('Cumulative variance (%)')
+    plt.grid('on', axis='y' )
     plt.title('The number of components needed to explain variance')
 
     plt.show()
@@ -117,7 +118,7 @@ def mahalanobis(x=None, data=None, cov=None):
     return mahal.diagonal()
 
 #### Calculate Principal Components and malanobis Distance of Data#
-def MahalanobisDistanceOfData(df, num_of_components):
+def PCAMahalanobisDistanceOfData(df, num_of_components):
     # transform data to lower dimension
     pca = PCA(n_components=num_of_components, svd_solver= 'full')
     df_PCA = pd.DataFrame(pca.fit_transform(df), index = df.index)
